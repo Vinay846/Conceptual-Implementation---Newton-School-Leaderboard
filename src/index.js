@@ -18,17 +18,16 @@ const isNullOrDefault = val => val === null || val === undefined;
 app.get("/topRankings", (req, res)=>{
     let offset = parseInt(req.query.offset);
     let limit = parseInt(req.query.limit);
-    if( offset < 0 || limit < 0){
+    
+    if(isNaN(offset) || offset < 0){
         offset = 0;
-        limit = 20;
-    }if(isNaN(offset)){
-        offset = 0;
-    }if(isNaN(limit)){
+    }if(isNaN(limit) || limit < 0){
         limit = 20;
     }
     let toSend = [];
     for(let i=offset+1; i<=limit+offset; i++){
-        toSend.push(data[i-1]);
+        toSend.push(i-1);
+        // toSend.push(data[i-1]);
     }
 
     res.send(toSend);
