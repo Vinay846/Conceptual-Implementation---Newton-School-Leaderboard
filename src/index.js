@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-const isNullOrDefault = val => val === null || val === undefined;
 
 // your code goes here
 app.get("/topRankings", (req, res)=>{
@@ -25,9 +24,9 @@ app.get("/topRankings", (req, res)=>{
         limit = 20;
     }
     let toSend = [];
-    for(let i=offset+1; i<=limit+offset; i++){
-        // toSend.push(i-1);
-        toSend.push(data[i-1]);
+    for(let i=offset; i<limit+offset; i++){
+        // toSend.push(i);
+        toSend.push(data[i]);
     }
 
     res.send(toSend);
