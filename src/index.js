@@ -26,8 +26,8 @@ app.get("/topRankings", (req, res)=>{
     }
     let toSend = [];
     for(let i=offset+1; i<=limit+offset; i++){
-        toSend.push(i-1);
-        // toSend.push(data[i-1]);
+        // toSend.push(i-1);
+        toSend.push(data[i-1]);
     }
 
     res.send(toSend);
