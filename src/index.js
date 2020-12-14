@@ -23,13 +23,10 @@ app.get("/topRankings", (req, res)=>{
     }if(isNaN(limit) || limit < 0){
         limit = 20;
     }
-    let toSend = [];
-    for(let i=offset; i<limit+offset; i++){
-        // toSend.push(i);
-        toSend.push(data[i]);
-    }
 
-    res.send(toSend);
+    res.send(data.filter((ele, idx)=>{
+        return idx >= offset && idx < offset + limit;
+    }));
 })
 
 
