@@ -18,9 +18,9 @@ app.get("/topRankings", (req, res)=>{
     let offset = parseInt(req.query.offset);
     let limit = parseInt(req.query.limit);
     
-    if(isNaN(offset) || offset < 0){
+    if(isNaN(offset)){
         offset = 0;
-    }if(isNaN(limit) || limit < 0){
+    }if(isNaN(limit)){
         limit = 20;
     }
 
