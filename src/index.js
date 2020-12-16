@@ -15,8 +15,8 @@ app.use(bodyParser.json())
 
 // your code goes here
 app.get("/topRankings", (req, res)=>{
-    const offset = Number(req.query.offset || 0);
-    const limit = Number(req.query.limit || 20);
+    let offset = Number(req.query.offset || 0);
+    let limit = Number(req.query.limit || 20);
 
     res.send(data.filter((ele, idx)=>{
         return idx >= offset && idx < offset + limit;
