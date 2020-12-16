@@ -12,11 +12,16 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(bodyParser.json())
 
-
+const sanitize = (value, defaultValue) => {
+    if(value === null || value === undefined || isNaN(Number(value))){
+        return defaultValue;
+    }
+    return Number(value);
+}
 // your code goes here
 app.get("/topRankings", (req, res)=>{
-    let offset = Number(req.query.offset || 0);
-    let limit = Number(req.query.limit || 20);
+    const offset = sanitize(req.query.offset, 0);
+    const limit = sanitize(req.query.limit, 20);
 
     res.send(data.filter((ele, idx)=>{
         return idx >= offset && idx < offset + limit;
